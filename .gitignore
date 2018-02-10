@@ -1,5 +1,5 @@
-./bin/Debug/
+atmSimulator/bin/Debug/
 *.cache
-./.vs/
+.vs/
 **/Debug/
-obj/Debug/
+atmSimulator/obj/Debug/

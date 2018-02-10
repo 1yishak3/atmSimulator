@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\HomeController1.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Views\Home\htmlpage.html" />
     <None Remove="Views\Home\Login.html" />
   </ItemGroup>
