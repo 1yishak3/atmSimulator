@@ -1,0 +1,5 @@
+atmSimulator/bin/Debug/
+*.cache
+.vs/
+**/Debug/
+atmSimulator/obj/Debug/
