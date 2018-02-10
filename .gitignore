@@ -1,1 +1,5 @@
-bin/Debug/
+./bin/Debug/
+*.cache
+./.vs/
+**/Debug/
+obj/Debug/
