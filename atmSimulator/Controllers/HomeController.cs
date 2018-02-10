@@ -14,7 +14,11 @@ namespace atmSimulator.Controllers
         {
             return View();
         }
-
+        public IActionResult Login()
+        {
+            ViewData["Message"] = "YOLO YOLT";
+            return View();
+        }
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
