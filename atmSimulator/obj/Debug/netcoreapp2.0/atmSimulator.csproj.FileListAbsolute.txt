@@ -1,0 +1,11 @@
+C:\Users\neke\atmSimulator\atmSimulator\bin\Debug\netcoreapp2.0\atmSimulator.deps.json
+C:\Users\neke\atmSimulator\atmSimulator\bin\Debug\netcoreapp2.0\atmSimulator.runtimeconfig.json
+C:\Users\neke\atmSimulator\atmSimulator\bin\Debug\netcoreapp2.0\atmSimulator.runtimeconfig.dev.json
+C:\Users\neke\atmSimulator\atmSimulator\bin\Debug\netcoreapp2.0\atmSimulator.dll
+C:\Users\neke\atmSimulator\atmSimulator\bin\Debug\netcoreapp2.0\atmSimulator.pdb
+C:\Users\neke\atmSimulator\atmSimulator\obj\Debug\netcoreapp2.0\atmSimulator.csprojResolveAssemblyReference.cache
+C:\Users\neke\atmSimulator\atmSimulator\obj\Debug\netcoreapp2.0\atmSimulator.csproj.CoreCompileInputs.cache
+C:\Users\neke\atmSimulator\atmSimulator\obj\Debug\netcoreapp2.0\atmSimulator.AssemblyInfoInputs.cache
+C:\Users\neke\atmSimulator\atmSimulator\obj\Debug\netcoreapp2.0\atmSimulator.AssemblyInfo.cs
+C:\Users\neke\atmSimulator\atmSimulator\obj\Debug\netcoreapp2.0\atmSimulator.dll
+C:\Users\neke\atmSimulator\atmSimulator\obj\Debug\netcoreapp2.0\atmSimulator.pdb

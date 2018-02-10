@@ -17,7 +17,7 @@ namespace atmSimulator.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "I'm figuring stuff out";
 
             return View();
         }
@@ -29,7 +29,14 @@ namespace atmSimulator.Controllers
             return View();
         }
 
-        public IActionResult Error()
+		public IActionResult Start()
+		{
+			ViewData["Message"] = "Your start page.";
+
+			return View();
+		}
+
+		public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
