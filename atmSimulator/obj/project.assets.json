@@ -12545,11 +12545,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\yisha\\source\\repos\\atmSimulator\\atmSimulator\\atmSimulator.csproj",
+      "projectUniqueName": "E:\\atmSimulator\\atmSimulator\\atmSimulator.csproj",
       "projectName": "atmSimulator",
-      "projectPath": "C:\\Users\\yisha\\source\\repos\\atmSimulator\\atmSimulator\\atmSimulator.csproj",
+      "projectPath": "E:\\atmSimulator\\atmSimulator\\atmSimulator.csproj",
       "packagesPath": "C:\\Users\\yisha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yisha\\source\\repos\\atmSimulator\\atmSimulator\\obj\\",
+      "outputPath": "E:\\atmSimulator\\atmSimulator\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
