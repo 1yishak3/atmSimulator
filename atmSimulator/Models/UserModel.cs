@@ -48,18 +48,19 @@ namespace atmSimulator.Models
             //make sure you check for common sense things like amount greater than 0 and stuff
             
             //call fetchUpdated() here to reflect changes made to the data base
+            return new Dictionary<string, string>();
         }
         public Dictionary<String, String> deposit(double amt)
         {
-
+            return new Dictionary<string, string>();
         }
         public Dictionary<String, String> transfer(String toId)
         {
-
+            return new Dictionary<string, string>();
         }
         public Dictionary<String, String> getTransactions()
         {
-
+            return new Dictionary<string, string>();
         }
 
     }
