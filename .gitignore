@@ -3,3 +3,5 @@ atmSimulator/bin/Debug/
 .vs/
 **/Debug/
 atmSimulator/obj/Debug/
+*.pyc
+db.pyc
