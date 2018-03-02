@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\NewFolder1\**" />
+    <Content Remove="Views\NewFolder1\**" />
+    <EmbeddedResource Remove="Views\NewFolder1\**" />
+    <None Remove="Views\NewFolder1\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Controllers\HomeController1.cs" />
   </ItemGroup>
 
@@ -15,6 +22,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
   </ItemGroup>
 
   <ItemGroup>
