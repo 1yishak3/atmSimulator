@@ -66,25 +66,29 @@ def home():
     return render_template('home.html')
 
 
-@app.route('/login/<path:upd>', methods=['POST'])
-def login(upd):
-    upwd=upd.split("%")
-    username=upwd[0].split("=")[1]
-    pin=upwd[1].split("=")[1]
+@app.route('/login', methods=['GET','POST'])
+def login():
+    #upwd=upd.split("%")
+    #username=upwd[0].split("=")[1]
+    #pin=upwd[1].split("=")[1]
+    print("Hello? I am here")
+    var = request.form
+    print(var)
+    print("I should be seeing something here")
     #response will contain uid to be used in future transactions
     #deal with username uniqueness issue and using that to access database
-    result=db.session.query(User).filter_by(name=username).first()
+   # result=db.session.query(User).filter_by(name=username).first()
     res=None
-    if(result==username):
-        #we will also not be hashing pins
-        if(result.pin==pin):
-            res={'status':0, 'uid':result.uid, 'name':result.name,'currentBalance':result.current_balance, 'error':''}
-        else:
-            res={'status':1, 'error':"invalid pin"}
-    else:
-        res={'status':1, 'error':"no user"}
+    # if(result==username):
+    #     #we will also not be hashing pins
+    #     if(result.pin==pin):
+    #         res={'status':0, 'uid':result.uid, 'name':result.name,'currentBalance':result.current_balance, 'error':''}
+    #     else:
+    #         res={'status':1, 'error':"invalid pin"}
+    # else:
+    #     res={'status':1, 'error':"no user"}
 
-    return jsonify(res)
+    return jsonify({'status':'hi dagmawi', 'error':'is this working'})
 
 #to be filled out according to the data needs of Neke
 @app.route('/data/<string:wyw>', methods=['GET'])
@@ -124,7 +128,7 @@ def withdraw(uid, amt):
     if(len(result)==0):
         return {'status':1, 'error':"no user"}
 
-    if(actu.current_balance<0 or amt>500):
+    if(actu.current_balance<=0 or amt>500):
         actu.current_balance=amti
         return {'status':1, 'error':"too much"}
     else:

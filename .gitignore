@@ -4,3 +4,4 @@ atmSimulator/bin/Debug/
 **/Debug/
 atmSimulator/obj/Debug/
 *.pyc
+db.pyc
