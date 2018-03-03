@@ -1,7 +1,8 @@
+*.pyc
 atmSimulator/bin/Debug/
 *.cache
 .vs/
 **/Debug/
 atmSimulator/obj/Debug/
 *.pyc
-db.pyc
+database/db.pyc

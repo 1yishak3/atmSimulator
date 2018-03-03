@@ -12,11 +12,11 @@ namespace atmSimulator.Models
         //read the comments below very well dude
         //to do things faster.
 
-        public static String userId;
-        public static String name;
-        public static Double currentBalance;
-        public static Dictionary<String, String> transactions;
-        public static bool loggedIn;//every function below should check if user is logged in first
+        public static String UserId { get; set; }
+        public static String Name { get; set; }
+        public static Double CurrentBalance { get; set; }
+        public static Dictionary<String, String> Transactions { get; set; }
+        public static bool LoggedIn { get; set; }//every function below should check if user is logged in first
         //if user is logged in, continue with fetching data, if not, then don't fetch. Just return a dict with status 1 and error not logged in
         //my controllers will handle this and tell it to the view.
 
@@ -37,7 +37,7 @@ namespace atmSimulator.Models
             //the rest of the functions will work
            
         }
-        private void fetchUpdated()
+        private static void FetchUpdated()
         {
             //you should call this function after every update like withdrawing transfering ot depositing
            
@@ -50,18 +50,18 @@ namespace atmSimulator.Models
             //call fetchUpdated() here to reflect changes made to the data base
             return new Dictionary<string, string>();
         }
-        public Dictionary<String, String> deposit(double amt)
+        public  Dictionary<String, String> deposit(double amt)
         {
             return new Dictionary<string, string>();
         }
-        public Dictionary<String, String> transfer(String toId)
+        public  Dictionary<String, String> transfer(String toId)
         {
             return new Dictionary<string, string>();
         }
-        public Dictionary<String, String> getTransactions()
+        public  Dictionary<String, String> getTransactions()
         {
             return new Dictionary<string, string>();
         }
-
+        
     }
 }
