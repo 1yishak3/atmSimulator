@@ -91,19 +91,17 @@ def login():
     return jsonify({'status':'hi dagmawi', 'error':'is this working'})
 
 #to be filled out according to the data needs of Neke
-@app.route('/data/<string:wyw>', methods=['GET'])
-def data(wyw):
-    inst=wyw.split("%")
+@app.route('/data/<string:uid>/<string:want>', methods=['GET'])
+def data(uid, want):
     res=None
-    # if():
-    
-    # elif:
-
-    # elif:
-
-    return Response(res)
+    result= db.session.query(User).filter_by(user_id=uid).scalar()
+    if result is None:
+        res={'status':1, 'error':"no such user"}
+    else:
+        res={}
+    return jsonify(res)
 #need to save transaction history
-@app.route('/action/<string:specific>')
+@app.route('/action', methods=['POST'])
 def action(specific):
     arr = specific.split("%")
     uid = arr[0].split("=")[1]
