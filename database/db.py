@@ -68,37 +68,37 @@ def home():
 
 @app.route('/login', methods=['GET','POST'])
 def login():
-    #upwd=upd.split("%")
-    #username=upwd[0].split("=")[1]
-    #pin=upwd[1].split("=")[1]
-    print("Hello? I am here")
-    var = request.form
-    print(var)
-    print("I should be seeing something here")
+    
+    form = request.form
+    
     #response will contain uid to be used in future transactions
     #deal with username uniqueness issue and using that to access database
-   # result=db.session.query(User).filter_by(name=username).first()
+    result=db.session.query(User).filter_by(name=form["username"]).first()
     res=None
-    # if(result==username):
-    #     #we will also not be hashing pins
-    #     if(result.pin==pin):
-    #         res={'status':0, 'uid':result.uid, 'name':result.name,'currentBalance':result.current_balance, 'error':''}
-    #     else:
-    #         res={'status':1, 'error':"invalid pin"}
-    # else:
-    #     res={'status':1, 'error':"no user"}
+    if result is not None:
+        if result.pin==form.pin:
+            res={'status':"0", 'uid':result.user_id,'username':result.name, 'currentBalance':result.current_balance}
+        else:
+            res={'status':"1",'error':"wrong pin"}
+    else:
+        res={'status':"1",'error':"no such user"}
 
-    return jsonify({'status':'hi dagmawi', 'error':'is this working'})
+    return jsonify(res)
 
-#to be filled out according to the data needs of Neke
+
 @app.route('/data/<string:uid>/<string:want>', methods=['GET'])
 def data(uid, want):
+    print(uid)
+    print(want)
     res=None
     result= db.session.query(User).filter_by(user_id=uid).scalar()
     if result is None:
         res={'status':1, 'error':"no such user"}
     else:
-        res={}
+        if want=="transactions":
+            res={"status":"0", 'uid':result.user_id, 'transactions':trans}
+        else:
+            res={"status":"0", "uid":result.user_id,'username':result.name, 'currentBalance':result.current_balance}
     return jsonify(res)
 #need to save transaction history
 @app.route('/action', methods=['POST'])

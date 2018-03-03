@@ -11,8 +11,23 @@ namespace atmSimulator.Controllers
     public class UserController : Controller
     {
         UserModel user;
+        bool loggedIn;
         // GET: /<controller>/
         //this is going to be the home page
+        public void Mlogin(string username, int pin)
+        {
+            user = new UserModel(username, pin);
+           
+            if (UserModel.LoggedIn)
+            {
+                Home(user);
+            }
+            else
+            {
+                new ErrorViewModel();
+            }
+        }
+        //public 
         public IActionResult Index()
         {
             return View();
@@ -25,9 +40,17 @@ namespace atmSimulator.Controllers
         }
 
         //Landing page (contains buttons to withdraw page deposit page and stuff)
-        public IActionResult Home()
+        public IActionResult Home(UserModel user)
         {
-            return View();
+            if (UserModel.LoggedIn)
+            {
+                ViewData["UserId"] = UserModel.UserId;
+                ViewData["Name"] = UserModel.Name;
+                ViewData["CurrentBalance"] = UserModel.CurrentBalance;
+                ViewData["LoggedIn"] = UserModel.LoggedIn;
+            }
+
+            return View(user);
         }
 
         //This is what shows when the withdraw button is clicked
@@ -43,7 +66,7 @@ namespace atmSimulator.Controllers
         }
 
         public IActionResult Transfer()
-        {
+        {   
             return View();
         }
 
