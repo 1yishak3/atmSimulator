@@ -5,3 +5,49 @@
 
 <h2>Deposit</h2>
 
+<p style="font-family:Lucida Console"><p style="font-size:xx-large"><strong>Your Current Balance is $@ViewData["CurrentBalance"].</strong></p>
+
+<center>
+    <p style="font-family:Lucida Console"><p style="font-size:xx-large"><strong>Please select or type your preferred amount</strong></p><br />
+    <p style="font-family:Lucida Console"><p style="font-size:xx-large"><strong>Amount must be a multiple of 20 and less than 500</strong></p> 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <form action="~/User/DepositAmt" method="get">
+                    <input t="number" value="20" class="btn btn-link" />
+                    <br />
+                    <br />
+                    <input type="number" value="100" class="btn btn-link" />
+                    <br />
+                    <br />
+                    <input type="number" value="300" class="btn btn-link" />
+                    <br />
+                    <br />
+                    OTHER<input type="number" name="Amount" class="btn btn-link" />
+                    <br />
+                    <br />
+                </form>
+            </div>
+            <div class="col-md-5">
+                <form action="~/User/DepositAmt" method="get">
+                    <input type="number" value="20" class="btn btn-link" />
+                    <br />
+                    <br />
+                    <input type="number" value="100" class="btn btn-link" />
+                    <br />
+                    <br />
+                    <input type="number" value="300" class="btn btn-link" />
+                    <br />
+                    <br />
+                </form>    
+            </div>
+        </div>
+        <br />
+        <br />
+    </div>
+</center>
+<right>
+    <a class="btn btn-default" asp-area="" asp-controller="User" asp-action="Home">Back</a>
+</right>
+     
+

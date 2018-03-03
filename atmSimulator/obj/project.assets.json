@@ -12860,7 +12860,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\yisha\\.nuget\\packages\\": {},
+    "C:\\Users\\neke\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
@@ -12870,18 +12870,18 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "E:\\atmSimulator\\atmSimulator\\atmSimulator.csproj",
+      "projectUniqueName": "C:\\Users\\neke\\Desktop\\project\\proj\\atmSimulator\\atmSimulator\\atmSimulator.csproj",
       "projectName": "atmSimulator",
-      "projectPath": "E:\\atmSimulator\\atmSimulator\\atmSimulator.csproj",
-      "packagesPath": "C:\\Users\\yisha\\.nuget\\packages\\",
-      "outputPath": "E:\\atmSimulator\\atmSimulator\\obj\\",
+      "projectPath": "C:\\Users\\neke\\Desktop\\project\\proj\\atmSimulator\\atmSimulator\\atmSimulator.csproj",
+      "packagesPath": "C:\\Users\\neke\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\neke\\Desktop\\project\\proj\\atmSimulator\\atmSimulator\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\yisha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\neke\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],

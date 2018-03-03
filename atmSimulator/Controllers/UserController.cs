@@ -14,18 +14,19 @@ namespace atmSimulator.Controllers
         bool loggedIn;
         // GET: /<controller>/
         //this is going to be the home page
-        public void Mlogin(string username, int pin)
+        public void Mlogin(String username, int pin)
         {
+
             user = new UserModel(username, pin);
-           
-            if (UserModel.LoggedIn)
-            {
-                Home(user);
-            }
-            else
-            {
-                new ErrorViewModel();
-            }
+
+             if (UserModel.LoggedIn)
+             {
+                 Home(user);
+             }
+             else
+             {
+                 new ErrorViewModel();
+             }
         }
         //public 
         public IActionResult Index()
@@ -70,7 +71,7 @@ namespace atmSimulator.Controllers
             return View();
         }
 
-        public IActionResult History()
+        public IActionResult Transactions()
         {
             return View();
         }

@@ -1,7 +1,32 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Home";
 }
 
-<h2>Home</h2>
+<h2 style="font-family:Lucida Console">Home PAGE</h2style="font-family:Lucida>
+<p style="font-family:Lucida Console"><p style="font-size:xx-large"><strong>WELCOME @ViewData["Name"].</strong></p>
+<p style="font-family:Lucida Console"><p style="font-size:xx-large"><strong>Your Current Balance is $@ViewData["CurrentBalance"].</strong></p>
 
+<center>
+    <p style="font-family:Lucida Console"><p style="font-size:xx-large"><strong>Please select your preferred transaction.</strong></p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <a class="btn btn-default" asp-area="" asp-controller="User" asp-action="Deposit">DEPOSIT</a>
+                <br />
+                <br />
+                <a class="btn btn-default" asp-area="" asp-controller="User" asp-action="Withdraw">WITHDRAW</a>
+            </div>
+            <div class="col-md-5">
+                <a class="btn btn-default" asp-area="" asp-controller="User" asp-action="Transfer">TRANSFERS</a>
+                <br />
+                <br />
+                <a class="btn btn-default" asp-area="" asp-controller="User" asp-action="Transaction">TRANSACTION HISTORY</a>
+            </div>
+        </div>
+        <br />
+        <br />
+    </div>
+    <form action="~/User/Logout" method="get">                                                                        
+       <input type="button" value="Logout" class="btn btn-link" />
+    </form>
+</center>
