@@ -59,11 +59,12 @@
     <br />
     <center>
         <p style="font-family:Lucida Console"><p style="font-size:xx-large"><strong>Please input your login credentials.</strong></p>
-        <form action="~/User/Mlogin" method="get">
-           Username: <input type="text" name="username" required /><br /><br />
-           PIN: <input type="number" name="pin"  required /><br /><br />
-                                                                                   
-           <input type="submit" value="Login" class="btn btn-link" />
-         </form>
+        <form action="~/User/Mlogin" method="post">
+            Username: <input type="text" name="username" required /><br /><br />
+            PIN: <input type="number" name="pin" required /><br /><br />
+
+            <button><input type="submit" value="Login" class="btn btn-link" /></button>
+        </form>
+
     </center>
 </body>

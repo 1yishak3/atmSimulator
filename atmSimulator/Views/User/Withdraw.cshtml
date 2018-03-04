@@ -10,37 +10,47 @@
 <center>
     <p style="font-family:Lucida Console"><p style="font-size:xx-large"><strong>Please select or type your preferred amount</strong></p><br />
     <p style="font-family:Lucida Console"><p style="font-size:xx-large"><strong>Amount must be a multiple of 20 and less than 500</strong></p>
-
     <div class="container">
         <div class="row">
             <div class="col-md-5">
-                <form action="~/User/WithdrawAmt" method="get">
-                    <input t="number" value="20" class="btn btn-link" />
-                    <br />
-                    <br />
-                    <input type="number" value="100" class="btn btn-link" />
-                    <br />
-                    <br />
-                    <input type="number" value="300" class="btn btn-link" />
-                    <br />
-                    <br />
-                    OTHER<input type="number" name="Amount" class="btn btn-link" />
-                    <br />
-                    <br />
+                <form action="~/User/Withdraw20" method="post">
+                    <button><input type="submit" value="20" class="btn btn-link" /></button>
                 </form>
+                <br />
+                <br />
+                <form action="~/User/Withdraw100" method="post">
+                    <button><input type="submit" value="100" class="btn btn-link" /></button>
+                </form>
+                <br />
+                <br />
+                <form action="~/User/Withdraw300" method="post">
+                    <button><input type="submit" value="300" class="btn btn-link" /></button>
+                </form>
+                <br />
+                <br />
+                <form action="~/User/WithdrawAmt" method="post">
+                    OTHER<input type="number" name="Amount" />
+                    <button><input type="submit" value="Enter" class="btn btn-link" /></button>
+                </form>
+                <br />
+                <br />
             </div>
             <div class="col-md-5">
-                <form action="~/User/WitdrawAmt" method="get">
-                    <input type="number" value="20" class="btn btn-link" />
-                    <br />
-                    <br />
-                    <input type="number" value="100" class="btn btn-link" />
-                    <br />
-                    <br />
-                    <input type="number" value="300" class="btn btn-link" />
-                    <br />
-                    <br />
+                <form action="~/User/Withdraw40" method="post">
+                    <button><input type="submit" value="40" class="btn btn-link" /></button>
                 </form>
+                <br />
+                <br />
+                <form action="~/User/Withdraw200" method="post">
+                    <button><input type="submit" value="200" class="btn btn-link" /></button>
+                </form>
+                <br />
+                <br />
+                <form action="~/User/Withdraw500" method="post">
+                    <button><input type="submit" value="500" class="btn btn-link" /></button>
+                </form>
+                <br />
+                <br />
             </div>
         </div>
         <br />

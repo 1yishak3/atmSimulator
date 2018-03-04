@@ -13,33 +13,44 @@
     <div class="container">
         <div class="row">
             <div class="col-md-5">
-                <form action="~/User/DepositAmt" method="get">
-                    <input t="number" value="20" class="btn btn-link" />
-                    <br />
-                    <br />
-                    <input type="number" value="100" class="btn btn-link" />
-                    <br />
-                    <br />
-                    <input type="number" value="300" class="btn btn-link" />
-                    <br />
-                    <br />
-                    OTHER<input type="number" name="Amount" class="btn btn-link" />
-                    <br />
-                    <br />
+                <form action="~/User/Deposit20" method="post">
+                    <button><input type="submit" value="20" class="btn btn-link" /></button>
                 </form>
+                <br />
+                <br />
+                <form action="~/User/Deposit100" method="post">
+                    <button><input type="submit" value="100" class="btn btn-link" /></button>
+                </form>
+                <br />
+                <br />
+                <form action="~/User/Deposit300" method="post">
+                    <button><input type="submit" value="300" class="btn btn-link" /></button>
+                </form>
+                <br />
+                <br />
+                <form action="~/User/DepositAmt" method="post">
+                    OTHER<input type="number" name="Amount"/>
+                    <button><input type="submit" value="Enter" class="btn btn-link" /></button>
+                </form>               
+                <br />
+                <br />
             </div>
             <div class="col-md-5">
-                <form action="~/User/DepositAmt" method="get">
-                    <input type="number" value="20" class="btn btn-link" />
-                    <br />
-                    <br />
-                    <input type="number" value="100" class="btn btn-link" />
-                    <br />
-                    <br />
-                    <input type="number" value="300" class="btn btn-link" />
-                    <br />
-                    <br />
-                </form>    
+                <form action="~/User/Deposit40" method="post">
+                    <button><input type="submit" value="40" class="btn btn-link" /></button>
+                </form>
+                <br />
+                <br />
+                <form action="~/User/Deposit100" method="post">
+                    <button><input type="submit" value="100" class="btn btn-link" /></button>
+                </form>
+                <br />
+                <br />
+                <form action="~/User/Deposit500" method="post">
+                    <button><input type="submit" value="500" class="btn btn-link" /></button>
+                </form>
+                <br />
+                <br />
             </div>
         </div>
         <br />

@@ -28,6 +28,7 @@ namespace atmSimulator.Controllers
                  new ErrorViewModel();
              }
         }
+
         //public 
         public IActionResult Index()
         {
