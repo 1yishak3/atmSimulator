@@ -1,7 +1,67 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Withdraw";
 }
 
 <h2>Withdraw</h2>
 
+<p style="font-family:Lucida Console"><p style="font-size:xx-large"><strong>Your Current Balance is $@ViewData["CurrentBalance"].</strong></p>
+
+<center>
+    <p style="font-family:Lucida Console"><p style="font-size:xx-large"><strong>Please select or type your preferred amount</strong></p><br />
+    <p style="font-family:Lucida Console"><p style="font-size:xx-large"><strong>Amount must be a multiple of 20 and less than 500</strong></p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <form action="~/User/WithdrawAmt" method="POST">
+                    <input type="hidden" value=20 name="amt" />
+                    <input type="submit" value="20" class="btn btn-link" />
+                </form>
+                <br />
+                <br />
+                <form action="~/User/WithdrawAmt" method="POST">
+                    <input type="hidden" value=100 name="amt" />
+                    <input type="submit" value="100" class="btn btn-link" />
+                </form>
+                <br />
+                <br />
+                <form action="~/User/WithdrawAmt" method="POST">
+                    <input type="hidden" value=300 name="Amount" />
+                    <input type="submit" value="300" class="btn btn-link" />
+                </form>
+                <br />
+                <br />
+                <form action="~/User/WithdrawAmt" method="POST">
+                    OTHER: <input type="number" name="Amount" />
+                    <input type="submit" value="Enter" class="btn btn-link" />
+                </form>
+                <br />
+                <br />
+            </div>
+            <div class="col-md-5">
+                <form action="~/User/WithdrawAmt" method="POST">
+                    <input type="hidden" value=40 name="Amount" />
+                    <input type="submit" value="40" class="btn btn-link" />
+                </form>
+                <br />
+                <br />
+                <form action="~/User/WithdrawAmt" method="POST">
+                    <input type="hidden" value=200 name="Amount" />
+                    <input type="submit" value="200" class="btn btn-link" />
+                </form>
+                <br />
+                <br />
+                <form action="~/User/WithdrawAmt" method="POST">
+                    <input type="hidden" value=500 name="Amount" />
+                    <input type="submit" value="500" class="btn btn-link" />
+                </form>
+                <br />
+                <br />
+            </div>
+        </div>
+        <br />
+        <br />
+    </div>
+</center>
+<right>
+    <a class="btn btn-default" asp-area="" asp-controller="User" asp-action="Home">Back</a>
+</right>

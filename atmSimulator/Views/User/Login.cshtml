@@ -1,7 +1,20 @@
-﻿
-@{
-    ViewData["Title"] = "Login";
+﻿@{
+    ViewData["Title"] = "LoginPage";
 }
 
-<h2>Login</h2>
+<body style="background-color:lavender">
+    
+    <br />
+    <br />
+    <br />
+    <center>
+        <p style="font-family:Lucida Console"><p style="font-size:xx-large"><strong>Please input your login credentials.</strong></p>
+        <form action="~/User/Mlogin" method="POST">
+            Username: <input type="text" name="username" required /><br /><br />
+            PIN: <input type="number" name="pin" required /><br /><br />
+            
+            <input type="submit" value="Login" class="btn btn-link" />
+        </form>
 
+    </center>
+</body>
