@@ -1,0 +1,69 @@
+﻿body {
+    margin: 25px 50px 75px 100px;
+    padding: 0;
+}
+
+.h2 {
+    margin: 0;
+    padding: 35px;
+    text-align: left;
+    font-size: 32px;
+}
+
+.p {
+    margin: 0;
+    padding: 35px;
+    font-weight: bold;
+    text-align: left;
+    font-size: 25px;
+}
+
+.container input {
+    width: 50%;
+    margin-bottom: 20px;
+    vertical-align: central;
+}
+.container input[type="submit"] {
+    border: thick;
+    outline: none;
+    height: 40px;
+    background: #dd1429;
+    font-size: 16px;
+    color: #ffffff;
+    border-radius: 35%; 
+}
+
+.container input[type="submit"]:hover {
+    cursor: pointer;
+    background: #ff6a00;
+    color: #000000;
+}
+
+.input[type="submit"] {
+    border: thick;
+    outline: none;
+    height: 40px;
+    background: #dd1429;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.input[type="submit"]:hover {
+    cursor: pointer;
+    background: #ff6a00;
+    color: #000000;
+}
+
+.input[type="number"] {
+    border: solid;
+    outline: none;
+    height: 40px;
+    font-size: 16px;
+    color: #000000;
+}
+
+
+
+
+
+

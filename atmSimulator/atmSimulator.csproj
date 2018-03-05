@@ -6,13 +6,31 @@
 
   <ItemGroup>
     <Compile Remove="Views\NewFolder1\**" />
+    <Compile Remove="wwwroot\css\Layana v1.0 Free Website Template - Free-CSS.com\**" />
+    <Compile Remove="wwwroot\css\Run Charity Lite Free Website Template - Free-CSS.com\**" />
+    <Compile Remove="wwwroot\css\Serenity Free Website Template - Free-CSS.com\**" />
     <Content Remove="Views\NewFolder1\**" />
+    <Content Remove="wwwroot\css\Layana v1.0 Free Website Template - Free-CSS.com\**" />
+    <Content Remove="wwwroot\css\Run Charity Lite Free Website Template - Free-CSS.com\**" />
+    <Content Remove="wwwroot\css\Serenity Free Website Template - Free-CSS.com\**" />
     <EmbeddedResource Remove="Views\NewFolder1\**" />
+    <EmbeddedResource Remove="wwwroot\css\Layana v1.0 Free Website Template - Free-CSS.com\**" />
+    <EmbeddedResource Remove="wwwroot\css\Run Charity Lite Free Website Template - Free-CSS.com\**" />
+    <EmbeddedResource Remove="wwwroot\css\Serenity Free Website Template - Free-CSS.com\**" />
     <None Remove="Views\NewFolder1\**" />
+    <None Remove="wwwroot\css\Layana v1.0 Free Website Template - Free-CSS.com\**" />
+    <None Remove="wwwroot\css\Run Charity Lite Free Website Template - Free-CSS.com\**" />
+    <None Remove="wwwroot\css\Serenity Free Website Template - Free-CSS.com\**" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Controllers\HomeController1.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\css\Layana v1.0 Free Website Template - Free-CSS.com.zip" />
+    <Content Remove="wwwroot\css\Run Charity Lite Free Website Template - Free-CSS.com.zip" />
+    <Content Remove="wwwroot\css\Serenity Free Website Template - Free-CSS.com.zip" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +46,10 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\css\NewLayout\" />
   </ItemGroup>
 
 </Project>

@@ -1,62 +1,70 @@
 ﻿
 @{
     ViewData["Title"] = "Withdraw";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
 }
 
-<h2>Withdraw</h2>
+@section styles{
+    <link rel="stylesheet" href="~/css/StyleSheet1.css" />
+}
 
-<p style="font-family:Lucida Console"><p style="font-size:xx-large"><strong>Your Current Balance is $@ViewData["CurrentBalance"].</strong></p>
+    <body class="body-content">
+        <h2><center>my_Withdraw</center></h2>
 
-<center>
-    <p style="font-family:Lucida Console"><p style="font-size:xx-large"><strong>Please select or type your preferred amount</strong></p><br />
-    <p style="font-family:Lucida Console"><p style="font-size:xx-large"><strong>Amount must be a multiple of 20 and less than 500</strong></p>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-5">
-                <form action="~/User/Withdraw20" method="post">
-                    <button><input type="submit" value="20" class="btn btn-link" /></button>
-                </form>
-                <br />
-                <br />
-                <form action="~/User/Withdraw100" method="post">
-                    <button><input type="submit" value="100" class="btn btn-link" /></button>
-                </form>
-                <br />
-                <br />
-                <form action="~/User/Withdraw300" method="post">
-                    <button><input type="submit" value="300" class="btn btn-link" /></button>
-                </form>
-                <br />
-                <br />
-                <form action="~/User/WithdrawAmt" method="post">
-                    OTHER<input type="number" name="Amount" />
-                    <button><input type="submit" value="Enter" class="btn btn-link" /></button>
-                </form>
-                <br />
-                <br />
-            </div>
-            <div class="col-md-5">
-                <form action="~/User/Withdraw40" method="post">
-                    <button><input type="submit" value="40" class="btn btn-link" /></button>
-                </form>
-                <br />
-                <br />
-                <form action="~/User/Withdraw200" method="post">
-                    <button><input type="submit" value="200" class="btn btn-link" /></button>
-                </form>
-                <br />
-                <br />
-                <form action="~/User/Withdraw500" method="post">
-                    <button><input type="submit" value="500" class="btn btn-link" /></button>
-                </form>
-                <br />
-                <br />
-            </div>
+        <p>Your Current Balance is <text style="color:red"><b>$@ViewData["CurrentBalance"]</b></text><br />
+        Please select or type your preferred amount<br />
+        <b>The amount entered must be a multiple of 20 and less than $500.00</b></p>
+        <br /> <br />
+        <div class="container">
+            <center>
+            <div class="row">
+                <div class="col-md-4">
+                    <form action="~/User/WithdrawAmt" method="POST">
+                        <input type="hidden" name="amt" value="20">
+                        <input type="submit" class="btn btn-success" value="20" />
+                    </form>
+                    <br />
+                    <br />
+                    <form action="~/User/WithdrawAmt" method="POST">
+                        <input type="hidden" value="100" name="amt">
+                        <input type="submit" class="btn btn-success" value="100" />
+                    </form>
+                    <br />
+                    <br />
+                    <form action="~/User/WithdrawAmt" method="POST">
+                        <input type="hidden" name="amt" value="300">
+                        <input type="submit" class="btn btn-success" value="300" />
+                    </form>
+                    <br />
+                    <br />
+                </div>
+                <div class="col-md-4">
+                    <form action="~/User/WithdrawAmt" method="POST">
+                        <input type="hidden" value="40" name="amt">
+                        <input type="submit" class="btn btn-success" value="40" />
+                    </form>
+                    <br />
+                    <br />
+                    <form action="~/User/WithdrawAmt" method="POST">
+                        <input type="hidden" value="200" name="amt">
+                        <input type="submit" class="btn btn-success" value="200" />
+                    </form>
+                    <br />
+                    <br />
+                    <form action="~/User/WithdrawAmt" method="POST">
+                        <input type="hidden" value="500" name="amt">
+                        <input type="submit" class="btn btn-success" value="500" />
+                    </form>
+                    <br />
+                    <br />
+                </div>
+            </div> 
+           </center>
         </div>
-        <br />
-        <br />
-    </div>
-</center>
-<right>
-    <a class="btn btn-default" asp-area="" asp-controller="User" asp-action="Home">Back</a>
-</right>
+        <form action="~/User/WithdrawAmt" method="POST">
+            <p><b>OTHER</b></p>
+            <input type="number" name="amt" required/>
+            <input type="submit" class="btn btn-success" value="Enter" />
+        </form>
+        <a asp-area="" asp-controller="User" asp-action="Home"><div class="h1"><span class="glyphicon glyphicon-arrow-left" style="color:coral">Back</span></div></a>
+    </body>
