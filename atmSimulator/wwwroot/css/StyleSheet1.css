@@ -39,7 +39,7 @@
     color: #000000;
 }
 
-.input[type="submit"] {
+.body-content input[type="submit"] {
     border: thick;
     outline: none;
     height: 40px;
@@ -48,13 +48,13 @@
     color: #ffffff;
 }
 
-.input[type="submit"]:hover {
+.body-content input[type="submit"]:hover {
     cursor: pointer;
     background: #ff6a00;
     color: #000000;
 }
 
-.input[type="number"] {
+.body-content input[type="number"] {
     border: solid;
     outline: none;
     height: 40px;

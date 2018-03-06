@@ -1,11 +1,42 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Transactions";
     Layout = "~/Views/Shared/_Layout1.cshtml";
 }
+@section styles{
+    <link rel="stylesheet" href="~/css/StyleSheet4.css" />
+}
 
 <h2>Transactions</h2>
+<table>
+    <tr>
+        <th style="font-size:large" style="color: coral">
+            User ID
+        </th>
+        <th style="font-size:large" style="color: coral">
+            Type
+        </th>
+        <th style="font-size:large" style="color: coral">
+            Amount
+        </th>
+        <th style="font-size:large" style="color: coral">
+            To
+        </th>
+    </tr>
+    @{
+        var transactions = (List<Transaction>)ViewData["transactions"];
+    }
 
+    @foreach (var item in @transactions)
+    {
+        <tr>
+            <td>@item.user_id</td>
+            <td>@item.trans_type</td>
+            <td>@item.trans_amount</td>
+            <td>@item.trans_to</td>
+        </tr>
+    }
+</table>
+<a asp-area="" asp-controller="User" asp-action="Home"><div class="h1"><span class="glyphicon glyphicon-arrow-left" style="color:coral">Back</span></div></a>
 
 
 

@@ -11,7 +11,7 @@
     <body class="body-content">
         <h2><center>my_Withdraw</center></h2>
 
-        <p>Your Current Balance is <text style="color:red"><b>$@ViewData["CurrentBalance"]</b></text><br />
+        <p style="font-size:large">Your Current Balance is <text style="color:red"><b>$@ViewData["CurrentBalance"]</b></text><br />
         Please select or type your preferred amount<br />
         <b>The amount entered must be a multiple of 20 and less than $500.00</b></p>
         <br /> <br />
@@ -67,4 +67,22 @@
             <input type="submit" class="btn btn-success" value="Enter" />
         </form>
         <a asp-area="" asp-controller="User" asp-action="Home"><div class="h1"><span class="glyphicon glyphicon-arrow-left" style="color:coral">Back</span></div></a>
+             @if (@ViewBag.MyErrorMessage != null)
+            {
+                <script type="text/javascript">
+                    window.onload = function () {
+                        alert("@ViewBag.MyErrorMessage");
+                    };
+                </script>
+            }
+
+            @if (@ViewBag.MySuccessMessage != null)
+            {
+                <script type="text/javascript">
+                    window.onload = function () {
+                        alert("@ViewBag.MySuccesMessage");
+                    };
+                </script>
+            }
+
     </body>

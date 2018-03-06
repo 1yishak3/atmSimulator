@@ -11,18 +11,20 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!--[if lte IE 8]><link rel="stylesheet" href="~/css/NewLayout/css/ie8.css" /><![endif]-->
     <!--[if lte IE 9]><link rel="stylesheet" href="~/css/NewLayout/css/ie9.css" /><![endif]-->
+    @RenderSection("styles", false);
 </head>
 
 <body class="right-sidebar" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
     <div id="page-wrapper">
-        <div id="header-wrapper">
-            <form action="~/User/Logout" method="POST">
-                <input type="submit" class="btn btn-success" value="500" style="float: right;"/>
-            </form>               
+        <div id="header-wrapper">              
             <div id="header" class="container">
-                    <h4 id="logo"><a href="index.html">GAMARIC </a></h4>
-                    <br />
-                </div>
+                <h4 id="logo"><a href="">GAMARIC</h4>
+                <br />
+                <ul>
+                <li><div class="h1"><span class="glyphicon glyphicon-home fa-2x" style="color:white"></span></div></a>
+                <a asp-area="" asp-controller="User" asp-action="Logout"><div class="h1"><span class="btn btn-danger btn-lg">LOGOUT</span></div></a></li>
+                </ul>
+            </div>
 
                 <section id="hero" class="container">
                     <header>
@@ -42,7 +44,7 @@
                 <section id="sidebar">
                     <section>
                         <br />
-                        <a href="#" class="image featured"><img src="~/css/NewLayout/images/pic03.jpg" alt="" /></a>
+                        <a href="#" class="image featured"><img src="~/css/img_3 - Copy.png" alt="" /></a>
                         <header>
                             <h3>Our Staff</h3>
                         </header>
@@ -51,17 +53,6 @@
                             worlwide. We continuously strive to improve our staffs skills with
                             training programs and conferences.
                         </p>
-                    </section>
-                    <section>
-                        <a href="#" class="image featured"><img src="~/css/NewLayout/images/pic04.jpg" alt="" /></a>
-                        <header>
-                            <h3>Our Promise to you</h3>
-                        </header>
-                        <p>
-                            We're always striving to make you as comfortable possible. For any concerns
-                            or cxomplaits,please contact us at <strong>cservices@gamaric.com</strong>.
-                        </p>
-                        <br />
                     </section>
                 </section>
 

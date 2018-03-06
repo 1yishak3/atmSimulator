@@ -1,27 +1,35 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "LoginPage";
     Layout = "~/Views/Shared/_Layout1.cshtml";
 }
 
-@section styles{ 
+@section styles{
     <link rel="stylesheet" href="~/css/StyleSheet.css" />
 }
 
-<body class="container">
     <div class="loginbox">
         <h2><center>LOGIN</center></h2>
         <h1><center><span class="glyphicon glyphicon-user" style="color:coral"></span></center></h1>
         <h5>Please input your login credentials here.</h5>
         <form method="POST" action="~/User/Mlogin">
-            <p>Username</p>
+            <p style="font-size:large" style="color: coral">Username</p>
             <input type="text" name="username" title="Enter a username" required><br />
-            <p>PIN</p>
+            <p style="font-size:large" style="color: coral">PIN</p>
             <input type="password" name="pin" pattern="[0-9]{4}" title=" (4-digit nnumber) Enter a valid pin number" required><br />
-            <input type="submit" value="Login" class="btn btn-success" role="button" />
+            <input type="submit" value="Login" class="btn btn-success">
         </form>
+        @if (@ViewBag.MyErrorMessage != null)
+        {
+        <script type="text/javascript">
+                    window.onload = function () {
+                        alert("@ViewBag.MyErrorMessage");
+
+                    };
+        </script>
+         }
+
     </div>
-</body>
+
 
 
 

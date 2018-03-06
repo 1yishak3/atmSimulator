@@ -1,20 +1,8 @@
 ﻿body {
     margin: 25px 50px 75px 100px;
-    padding: 35px;
+    padding: 0;
 }
 
-.loginbox {
-    width: 320px;
-    height: 460px;
-    background: #8d3535;
-    color: white;
-    top: 85%;
-    left: 33%;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    box-sizing: border-box;
-    padding: 30px 30px;
-}
 
 .h5 {
     margin: 0;
@@ -30,13 +18,21 @@
 }
 
 .loginbox input{
-    width: 100%;
+    width: 50%;
     margin-bottom: 20px;
 }
 
-.loginbox input[type="text"], input[type="password"]{
-    border: none;
-    border-bottom: 1px solid #fff;
+.loginbox input[type="text"]{
+        border: 3px solid #a91414;
+    background: white;
+    outline: none;
+    height: 40px;
+    font-size: 16px;
+    color: #000000;
+}
+
+.loginbox input[type="password"] {
+    border: 3px solid #a91414;
     background: white;
     outline: none;
     height: 40px;
