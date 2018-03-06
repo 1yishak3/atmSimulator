@@ -135,7 +135,7 @@ def action():
 def withdraw(uid, amtl):
     amt=float(amtl)
     result=db.session.query(User).filter_by(user_id=uid).scalar()
-    actu = result.first()
+    actu = result
     if result is None:
         return {'status':1, 'error':"no user"}
     amti = actu.current_balance
@@ -148,7 +148,7 @@ def withdraw(uid, amtl):
     else:
         amti = actu.current_balance
         actu.current_balance=amti-amt
-        size=len(db.session.query(Transaction).all)
+        size=len(db.session.query(Transaction).all())
         trans = Transaction(user_id=uid, trans_id=size, trans_type='withdraw', trans_amount=amt)
         db.session.add(trans)
 
@@ -158,7 +158,7 @@ def withdraw(uid, amtl):
 def deposit(uid, amtl):
     amt=float(amtl)
     result=db.session.query(User).filter_by(user_id=uid).scalar()
-    actu = result.first()
+    actu = result
     if result is None:
         return {'status':1, 'error':"no user"}
     amti = actu.current_balance
@@ -167,7 +167,7 @@ def deposit(uid, amtl):
         return {'status':1, 'error':"too little"}
     else:    
         actu.current_balance=amti+amt
-        size=len(db.session.query(Transaction).all)
+        size=len(db.session.query(Transaction).all())
         trans = Transaction(user_id=uid, trans_id=size, trans_type='deposit', trans_amount=amt)
         db.session.add(trans)
     db.session.commit()
@@ -179,8 +179,8 @@ def transfer(uid, uid2, amtl):
     amt=float(amtl)
     result=db.session.query(User).filter_by(user_id=uid).scalar()
     result2=db.session.query(User).filter_by(user_id=uid2).scalar()
-    actu = result.first()
-    actu2 = result2.first()
+    actu = result
+    actu2 = result2
     if(result is None or result2 is None):
         return {'status':1, 'error':"no such user"}
     amti = actu.current_balance
