@@ -1,8 +1,50 @@
-﻿
-@{
-    ViewData["Title"] = "User";
+﻿@{
+    ViewData["Title"] = "IndexPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>User</h2>
-
-<h2>Hello there, I am user person  one to 3</h2>
+<div class="wrapper">
+    <section class="container">
+        <header class="major">
+            <h2 style="color:indianred">GAMARIC ATM SERVICES</h2>
+            <br />
+            <p style="color:black">
+                We are the leading ATM Service provider worldwide. Our motto is
+                <strong>
+                    Providing ATM Services Anytime, Anywhere, Always and Forever.
+                </strong>
+            </p>
+        </header>
+        <div class="row features">
+            <section class="4u 12u feature">
+                <div class="image-wrapper">
+                    <a class="image featured"><img src="~/css/img_3 - Copy.png" alt="" /></a>
+                </div>
+                <p>
+                    We have a diverse staff from over 145 countries, and over 350 branches
+                    worlwide.
+                </p>
+            </section>
+            <section class="4u 12u feature">
+                <div class="image-wrapper">
+                    <a class="image featured"><img src="~/css/img_4.png" alt="" /></a>
+                </div>
+                <p>
+                    We're always striving to make you as comfortable possible. Please contact
+                    us directly at <strong>cservices@gamaric.com</strong>
+                </p>
+            </section>
+            <section class="4u 12u feature">
+                <br />
+                <br />
+                <br />
+                <div class="image-wrapper">
+                    <a asp-area="" asp-controller="User" asp-action="Login"><span class="glyphicon glyphicon-user fa-5x" style="color:coral"></span></a>
+                </div>
+                <p>
+                    Click the icon above to logon to the online ATM.
+                </p>
+            </section>
+        </div>
+    </section>
+</div>

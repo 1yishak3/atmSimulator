@@ -3,7 +3,10 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 import sys
 
-
+#TODO
+#handle how transactions are returned
+#create the log out on the model
+#create the Error and Succeess Handler
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
@@ -27,34 +30,38 @@ class Transaction(db.Model):
         primary_key=True, 
         nullable=False)
     trans_type = db.Column(db.String, nullable=False)
-    trans_amount = db.Column(db.Integer, nullable=False)
-    trans_to = db.Column(db.String, nullable=True)
-    user_id = db.Column(db.String(64), db.ForeignKey('users.user_id'), nullable=False)
+    trans_amount = db.Column(db.Float, nullable=False)
+    trans_to = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     def __repr__(self):
-        return '<Transaction %r   %r   %r>' % self.trans_id, self.trans_type, self.current_balance
+        return '<Transaction   %s>' % self.trans_id
 
 class User(db.Model):
     __tablename__='users'
     user_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), nullable=True)
-    current_balance=db.Column(db.Integer, nullable=True)
+    current_balance=db.Column(db.Float, nullable=True)
     pin = db.Column(db.Integer, nullable=True)
-    transacts = db.relationship('Transaction', backref='user')
+    transacts = db.relationship('Transaction', foreign_keys="[Transaction.user_id]", backref='user')
     def __repr__(self):
-        return self.name
+        return '<User   %s>' % self.name
 
 #Models end here
 
 db.drop_all()
 db.create_all()
 default_user = User(user_id=0, 
-                    name="Test User", 
-                    current_balance=10000,
+                    name="Gamaric Test", 
+                    current_balance=5000.0,
+                    pin=1754)
+default_user2 = User(user_id=1,
+                    name="Gamaric Test 2",
+                    current_balance=5000.0,
                     pin=1754)
 default_transaction = Transaction(trans_id="321056", 
-                    user_id='testuser13', 
+                    user_id=0, 
                     trans_amount=0, 
-                    trans_type='wdr')
+                    trans_type='withdraw')
 
 db.session.add(default_transaction)
 db.session.add(default_user)
@@ -76,7 +83,7 @@ def login():
     result=db.session.query(User).filter_by(name=form["username"]).first()
     res=None
     if result is not None:
-        if result.pin==form.pin:
+        if result.pin==int(form["pin"]):
             res={'status':"0", 'uid':result.user_id,'username':result.name, 'currentBalance':result.current_balance}
         else:
             res={'status':"1",'error':"wrong pin"}
@@ -96,62 +103,78 @@ def data(uid, want):
         res={'status':1, 'error':"no such user"}
     else:
         if want=="transactions":
-            res={"status":"0", 'uid':result.user_id, 'transactions':trans}
+            t = result.transacts
+            trans={}
+            tu=0
+            for tr in t:
+                obj = {'transId':tr.trans_id,
+                'transType':tr.trans_type,
+                'userId':tr.user_id,
+                'transAmount':tr.trans_amount,
+                'transTo':tr.trans_to}
+                trans[""+str(tu)]=obj
+                tu=tu+1
+            res=trans
         else:
             res={"status":"0", "uid":result.user_id,'username':result.name, 'currentBalance':result.current_balance}
-    return jsonify(res)
+    res=jsonify(res)
+    print(res)
+    return res
 #need to save transaction history
 @app.route('/action', methods=['POST'])
-def action(specific):
-    arr = specific.split("%")
-    uid = arr[0].split("=")[1]
-    uid2 = None
-
-    if(len(arr)>2):
-        uid2=arr[2].split("="[1])
-
-    act = arr[1].split("=")
+def action():
     res=None
-    if(act[0]=="withdraw"):
-        res=withdraw(uid, act[1])
-    elif(act[0]=="deposit"):
-        res=deposit(uid, act[1])
-    elif(act[0]=="transfer"):
-        res=transfer(uid, uid2, act[1])
+    result = request.form
+    action = result["action"]
+    if action=="withdraw":
+        res=withdraw(result["userId"], float(result["amount"]))
+    elif action=="deposit":
+        res=deposit(result["userId"], float(result["amount"]))
+    elif action=="transfer":
+        res=transfer(result["userId1"], result["userId2"], float(result["amount"]))
+    else:
+        res={"status":"1", "error":"no such operation"}
     return jsonify(res)
 
-def withdraw(uid, amt):
-    result=db.session.query(User).filter_by(user_id=uid)
-    actu = result.first()
-    if(len(result)==0):
+def withdraw(uid, amtl):
+    amt=float(amtl)
+    result=db.session.query(User).filter_by(user_id=uid).scalar()
+    actu = result
+    if result is None:
         return {'status':1, 'error':"no user"}
-
-    if(actu.current_balance<=0 or amt>500):
+    amti = actu.current_balance
+    if(actu.current_balance<=0 or amt>500 or (amti-amt)<0):
         actu.current_balance=amti
         return {'status':1, 'error':"too much"}
+    if amt<0:
+        actu.current_balance=amti
+        return {'status':1, 'error':"too little"}
+    elif amt%20!= 0:
+        actu.current_balance=amti
+        return {'status':1, 'error':"not divisible by 20"}
     else:
         amti = actu.current_balance
         actu.current_balance=amti-amt
-        size=len(db.session.query(Transaction).all)
+        size=len(db.session.query(Transaction).all())
         trans = Transaction(user_id=uid, trans_id=size, trans_type='withdraw', trans_amount=amt)
         db.session.add(trans)
 
     db.session.commit()
     return {'status':0, 'error':''}
 
-def deposit(uid, amt):
-    result=db.session.query(User).filter_by(user_id=uid)
-    actu = result.first()
-    if(len(result)==0):
+def deposit(uid, amtl):
+    amt=float(amtl)
+    result=db.session.query(User).filter_by(user_id=uid).scalar()
+    actu = result
+    if result is None:
         return {'status':1, 'error':"no user"}
     amti = actu.current_balance
     if(amt<0):
         actu.current_balance=amti
         return {'status':1, 'error':"too little"}
-    else:
-        
-        actu.current_balance=amti-amt
-        size=len(db.session.query(Transaction).all)
+    else:    
+        actu.current_balance=amti+amt
+        size=len(db.session.query(Transaction).all())
         trans = Transaction(user_id=uid, trans_id=size, trans_type='deposit', trans_amount=amt)
         db.session.add(trans)
     db.session.commit()
@@ -159,26 +182,29 @@ def deposit(uid, amt):
 
 #might have to use a different updating format
 #haven't tested if it works
-def transfer(uid, uid2, amt):
-    result=db.session.query(User).filter_by(user_id=uid)
-    result2=db.session.query(User).filter_by(user_id=uid2)
-    actu = result.first()
-    actu2 = result2.first()
-    if(len(result)==0 or len(result2)==0):
-        return {'status':1, 'error':"no user"}
+def transfer(uid, uid2, amtl):
+    amt=float(amtl)
+    result=db.session.query(User).filter_by(user_id=uid).scalar()
+    result2=db.session.query(User).filter_by(user_id=uid2).scalar()
+    actu = result
+    actu2 = result2
+    if(result is None or result2 is None):
+        return {'status':1, 'error':"no such user"}
     amti = actu.current_balance
-    if(amt<0):
+    if(amt<0 ):
         actu.current_balance=amti
         return {'status':1, 'error':"too little"}
+    if((amti-amt)<0):
+        actu.current_balance=amti
+        return {'status':1, 'error':"not enough balance"}
     else:
-        
         actu.current_balance=amti-amt
         amti2 = actu2.current_balance
         actu2.current_balance=amti2+amt
-        size=len(db.session.query(Transaction).all)
+        size=len(db.session.query(Transaction).scalar())
         trans = Transaction(user_id=uid, trans_id=size, trans_type='transfer', trans_amount=amt, trans_to=uid2)
         db.session.add(trans)
-        db.session.commit()
+    db.session.commit()
     return {'status':0, 'error':''}
 
 def clear():

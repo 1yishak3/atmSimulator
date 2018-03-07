@@ -1,7 +1,91 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Deposit";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
 }
 
-<h2>Deposit</h2>
 
+@section styles{
+    <link rel="stylesheet" href="~/css/StyleSheet1.css" />
+}
+
+<body class="body-content">
+    <center><h2>Deposit Cash</h2></center>
+
+    <p style="font-size:large">
+        Your Current Balance is <text style="color:red"><b>$@ViewData["CurrentBalance"]</b></text><br />
+        Please select or type your preferred amount<br />
+        <b>The amount entered must be a multiple of 20 and less than $500.00</b>
+    </p>
+    <br /> <br />
+    <div class="container">
+        <center>
+            <div class="row">
+                <div class="col-md-4">
+                    <form action="~/User/DepositAmt" method="POST">
+                        <input type="hidden" name="amt" value="20">
+                        <input type="submit" class="btn btn-success" value="20" />
+                    </form>
+                    <br />
+                    <br />
+                    <form action="~/User/DepositAmt" method="POST">
+                        <input type="hidden" value="100" name="amt">
+                        <input type="submit" class="btn btn-success" value="100" />
+                    </form>
+                    <br />
+                    <br />
+                    <form action="~/User/DepositAmt" method="POST">
+                        <input type="hidden" name="amt" value="300">
+                        <input type="submit" class="btn btn-success" value="300" />
+                    </form>
+                    <br />
+                    <br />
+                </div>
+                <div class="col-md-4">
+                    <form action="~/User/DepositAmt" method="POST">
+                        <input type="hidden" value="40" name="amt">
+                        <input type="submit" class="btn btn-success" value="40" />
+                    </form>
+                    <br />
+                    <br />
+                    <form action="~/User/DepositAmt" method="POST">
+                        <input type="hidden" value="200" name="amt">
+                        <input type="submit" class="btn btn-success" value="200" />
+                    </form>
+                    <br />
+                    <br />
+                    <form action="~/User/DepositAmt" method="POST">
+                        <input type="hidden" value="500" name="amt">
+                        <input type="submit" class="btn btn-success" value="500" />
+                    </form>
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </center>
+    </div>
+    <form action="~/User/DepositAmt" method="POST">
+        <p><b>OTHER</b></p>
+        <input type="number" name="amt" required />
+        <input type="submit" class="btn btn-success" value="Enter" />
+    </form>
+    <a asp-area="" asp-controller="User" asp-action="Home"><div class="h1"><span class="glyphicon glyphicon-arrow-left" style="color:coral">Back</span></div></a>
+    @if (@ViewBag.MyErrorMessage != null)
+    {
+        <script type="text/javascript">
+                    window.onload = function () {
+                        alert("@ViewBag.MyErrorMessage");
+                    };
+        </script>
+    }
+
+    @if (@ViewBag.MySuccessMessage != null)
+    {
+        <script type="text/javascript">
+                    window.onload = function () {
+                        alert("@ViewBag.MySuccessMessage");
+                        window.location.href("/user");
+                    };
+        </script>
+       
+    }
+</body>
