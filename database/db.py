@@ -104,18 +104,22 @@ def data(uid, want):
     else:
         if want=="transactions":
             t = result.transacts
-            trans=[]
+            trans={}
+            tu=0
             for tr in t:
                 obj = {'transId':tr.trans_id,
                 'transType':tr.trans_type,
                 'userId':tr.user_id,
                 'transAmount':tr.trans_amount,
                 'transTo':tr.trans_to}
-                trans.append(obj)
-            res={"status":"0", 'uid':result.user_id, 'transactions':trans}
+                trans[""+str(tu)]=obj
+                tu=tu+1
+            res=trans
         else:
             res={"status":"0", "uid":result.user_id,'username':result.name, 'currentBalance':result.current_balance}
-    return jsonify(res)
+    res=jsonify(res)
+    print(res)
+    return res
 #need to save transaction history
 @app.route('/action', methods=['POST'])
 def action():
@@ -145,6 +149,9 @@ def withdraw(uid, amtl):
     if amt<0:
         actu.current_balance=amti
         return {'status':1, 'error':"too little"}
+    elif amt%20!= 0:
+        actu.current_balance=amti
+        return {'status':1, 'error':"not divisible by 20"}
     else:
         amti = actu.current_balance
         actu.current_balance=amti-amt

@@ -1,13 +1,49 @@
 ﻿@{
     ViewData["Title"] = "Transfer";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
 }
 
-<h2>Transfer</h2>
+@section styles{
+    <link rel="stylesheet" href="~/css/StyleSheet2.css" />
+}
 
-<p style="font-family:Lucida Console"><p style="font-size:xx-large"><strong>Please input bank credentialsan amount.</strong></p>
-<form action="~/User/TransferAmt" method="post">
-    To: <input type="number" name="bankaccout" required /><br /><br />
-    Amount: <input type="number" name="amount" required /><br /><br />
+<body class="container">
+    <div class="loginbox">
+        <center><h2>TRANSFER</h2></center>
+        <h3> Please input bank credentials and amount.</h3>
+        <p style="font-size:large; color: coral">FROM</p>
+        <select name="myaccount">
+            <option value="myaccount" selected>MY ACCOUNT</option>
+        </select>
+        <form method="POST" action="~/User/TransferAmt">
+            <p style="font-size:large;color: coral">TO</p>
+            <input type="number" name="bankaccount" pattern="[0-9]{4}" title=" () Enter a valid bank accounnt" required><br /><br />
+            <p style="font-size:large;color: coral">Amount</p>
+            <input type="number" name="amount" title=" (4-digit nnumber) Enter an amount" required><br /><br /><br /><br />
+            <center>
+                <input type="submit" value="Transfer" class="btn btn-success" role="button" />
+            </center>
+        </form>
+    </div>
+    <br />
+    <a asp-area="" asp-controller="User" asp-action="Home"><div class="h1"><span class="glyphicon glyphicon-arrow-left" style="color:coral">Back</span></div></a>
+    @if (@ViewBag.MyErrorMessage != null)
+    {
+        <script type="text/javascript">
+                    window.onload = function () {
+                        alert("@ViewBag.MyErrorMessage");
+                    };
+        </script>
+    }
 
-    <input type="submit" value="Transfer" class="btn btn-link" />
-</form>
+    @if (@ViewBag.MySuccessMessage != null)
+    {
+        <script type="text/javascript">
+                    window.onload = function () {
+                        alert("@ViewBag.MySuccessMessage");
+                        window.location.href("/user");
+                    };
+        </script>
+    }
+
+</body>

@@ -1,34 +1,58 @@
 ﻿@{
     ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-<h2 style="font-family:Lucida Console">
-    Home PAGE
-</h2>
-    <p style="font-family:Lucida Console"><p style="font-size:xx-large"><strong>WELCOME @ViewData["Name"].</strong></p>
-    <p style="font-family:Lucida Console"><p style="font-size:xx-large"><strong>Your Current Balance is $@ViewData["CurrentBalance"].</strong></p>
+@section styles{
+    <link rel="stylesheet" href="~/css/StyleSheet3.css" />
+}
 
-    <center>
-        <p style="font-family:Lucida Console"><p style="font-size:xx-large"><strong>Please select your preferred transaction.</strong></p>
-        <div class="container">
+<body class="homebox">
+    <h2>HOME PAGE</h2>
+    <br />
+    <br />
+    <p style="font-size:large">
+        WELCOME @ViewData["Name"]<br />
+        Your Current Balance is <text style="color:red"><b>$@ViewData["CurrentBalance"]</b></text><br />
+        Please select your preferred transaction.
+    </p>
+    <br /> <br />
+    <div class="container">
+        <center>
             <div class="row">
-                <div class="col-md-5">
-                    <a class="btn btn-default" asp-area="" asp-controller="User" asp-action="Deposit">DEPOSIT</a>
+                <div class="col-md-4">
+                    <form action="~/User/Deposit" method="POST">
+                        <input type="submit" class="btn btn-success" value="DEPOSIT" />
+                    </form>
                     <br />
                     <br />
-                    <a class="btn btn-default" asp-area="" asp-controller="User" asp-action="Withdraw">WITHDRAW</a>
+                    <br />
+                    <br />
+                    <form action="~/User/Transfer" method="POST">
+                        <input type="submit" class="btn btn-success" value="TRANSFER" />
+                    </form>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
                 </div>
-                <div class="col-md-5">
-                    <a class="btn btn-default" asp-area="" asp-controller="User" asp-action="Transfer">TRANSFERS</a>
+                <div class="col-md-4">
+                    <form action="~/User/Withdraw" method="POST">
+                        <input type="submit" class="btn btn-success" value="WITHDRAW" />
+                    </form>
                     <br />
                     <br />
-                    <a class="btn btn-default" asp-area="" asp-controller="User" asp-action="Transaction">TRANSACTION HISTORY</a>
+                    <br />
+                    <br />
+                    <form action="~/User/Transactions" method="POST">
+                        <input type="submit" class="btn btn-success" value="TRANSACTIONS" />
+                    </form>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
                 </div>
             </div>
-            <br />
-            <br />
-        </div>
-        <form action="~/User/Logout" method="get">
-            <input type="button" value="Logout" class="btn btn-link" />
-        </form>
-    </center>
+        </center>
+    </div>
+</body>

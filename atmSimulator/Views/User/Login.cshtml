@@ -1,20 +1,31 @@
 ﻿@{
     ViewData["Title"] = "LoginPage";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
 }
 
-<body style="background-color:lavender">
-    
-    <br />
-    <br />
-    <br />
-    <center>
-        <p style="font-family:Lucida Console"><p style="font-size:xx-large"><strong>Please input your login credentials.</strong></p>
-        <form action="~/User/Mlogin" method="POST">
-            Username: <input type="text" name="username" required /><br /><br />
-            PIN: <input type="number" name="pin" required /><br /><br />
-            
-            <input type="submit" value="Login" class="btn btn-link" />
-        </form>
+@section styles{
+    <link rel="stylesheet" href="~/css/StyleSheet.css" />
+}
 
-    </center>
-</body>
+<div class="loginbox">
+    <center><h2>LOGIN</h2></center>
+    <center><h1><span class="glyphicon glyphicon-user" style="color:coral"></span></h1></center>
+    <h5>Please input your login credentials here.</h5>
+    <form method="POST" action="~/User/Mlogin">
+        <p style="font-size:large;color: coral">Username</p>
+        <input type="text" name="username" title="Enter a username" required><br />
+        <p style="font-size:large;color: coral">PIN</p>
+        <input type="password" name="pin" pattern="[0-9]{4}" title=" (4-digit nnumber) Enter a valid pin number" required><br />
+        <input type="submit" value="Login" class="btn btn-success">
+    </form>
+    @if (@ViewBag.MyErrorMessage != null)
+    {
+        <script type="text/javascript">
+                    window.onload = function () {
+                        alert("@ViewBag.MyErrorMessage");
+
+                    };
+        </script>
+    }
+
+</div>

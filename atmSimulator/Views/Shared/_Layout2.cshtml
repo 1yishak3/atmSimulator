@@ -1,38 +1,61 @@
 ﻿<!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - atmSimulator</title>
+    <meta name="viewport" content="width=device-width" />
+    <title>>@ViewData["Title"] - atmSimulator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="~/css/NewLayout/css/main.css"></script><![endif]-->
     <link rel="stylesheet" href="~/css/NewLayout/css/main.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!--[if lte IE 8]><link rel="stylesheet" href="~/css/NewLayout/css/ie8.css" /><![endif]-->
     <!--[if lte IE 9]><link rel="stylesheet" href="~/css/NewLayout/css/ie9.css" /><![endif]-->
+    @RenderSection("styles", false);
 </head>
-<body class="homepage">
+
+<body class="right-sidebar" style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
     <div id="page-wrapper">
         <div id="header-wrapper">
             <div id="header" class="container">
-                <h4 id="logo"><a >GAMARIC </a></h4>
-                <br />
+                <h4 id="logo"><a >GAMARIC</a></h4>
             </div>
-
+            <a asp-area="" asp-controller="User" asp-action="Logout"><div class="h1"><span style="top:25px; right:25px; float:right" class="btn btn-danger btn-lg">LOGOUT</span></div></a>
             <section id="hero" class="container">
                 <header>
                     <h2>
+                        <br />
                         Welcome to GAMARIC ATM
+                        <br />
                     </h2>
                 </header>
             </section>
         </div>
+        <div class="row 150%">
+            <div class="8u 12u(narrower)">
+                @RenderBody()
+            </div>
+            <div class="4u 12u(narrower)">
+                <section id="sidebar">
+                    <section>
+                        <br />
+                        <a href="#" class="image featured"><img src="~/css/img_3 - Copy.png" alt="" /></a>
+                        <header>
+                            <h3>Our Staff</h3>
+                        </header>
+                        <p>
+                            We have a diverse staff from over 145 countries, and over 350 branches
+                            worlwide. We continuously strive to improve our staffs skills with
+                            training programs and conferences.
+                        </p>
+                    </section>
+                </section>
 
-        @RenderBody()
-
+            </div>
+        </div>
         <div id="footer-wrapper">
             <div id="footer" class="container">
-                <div class="major">
+                <div>
                     <p>
                         <strong>Providing ATM Services Anytime, Anywhere, Always and Forever.</strong>
                     </p>
@@ -42,8 +65,7 @@
                 </ul>
             </div>
         </div>
-     </div>
-
+    </div>
         <script src="~/css/NewLayout/js/jquery.min.js"></script>
         <script src="~/css/NewLayout/js/jquery.dropotron.min.js"></script>
         <script src="~/css/NewLayout/js/skel.min.js"></script>

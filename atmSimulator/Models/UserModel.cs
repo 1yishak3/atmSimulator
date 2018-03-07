@@ -21,9 +21,9 @@ namespace atmSimulator.Models
         public static String UserId { get; set; }
         public static String Name { get; set; }
         public static Double CurrentBalance { get; set; }
-        public static Dictionary<String, String> Transactions { get; set; }
+        public static Dictionary<String, Dictionary<string, string>> Transactions { get; set; }
         public static bool LoggedIn { get; set; }
-        public static String url = "https://ogxnzflavn.localtunnel.me";
+        public static String url = "https://rahyozxcgs.localtunnel.me";
         //every function below should check if user is logged in first
         //if user is logged in, continue with fetching data, if not, then don't fetch. Just return a dict with status 1 and error not logged in
         //my controllers will handle this and tell it to the view.
@@ -68,7 +68,7 @@ namespace atmSimulator.Models
 
             while (mainDict == null) ;
             Debug.WriteLine(mainDict);
-            if (mainDict["status"] == "0")
+            if (mainDict["status"].Equals("0"))
             {
                 LoggedIn = true;
                 UserId = mainDict["uid"];
@@ -109,11 +109,12 @@ namespace atmSimulator.Models
                 dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseString);
             }
 
-            if (dict["status"] == "" + 0)
+            if (dict["status"].Equals("0"))
             {
                 UserId = dict["uid"];
                 Name = dict["username"];
                 CurrentBalance = Double.Parse(dict["currentBalance"]);
+                Debug.WriteLine(CurrentBalance);
             }
 
         }
@@ -152,7 +153,7 @@ namespace atmSimulator.Models
 
             Dictionary<string, string> result = post(amt, "withdraw");
 
-            if (result["status"] == "" + 0)
+            if (result["status"].Equals("0"))
             {
                 FetchUpdated();
             }
@@ -172,7 +173,7 @@ namespace atmSimulator.Models
             CurrentBalance += amount;
             Dictionary<string, string> response = post(amount, "deposit");
 
-            if (response["status"] == "" + 0)
+            if (response["status"].Equals("0") )
             {
                 FetchUpdated();
             }
@@ -197,21 +198,22 @@ namespace atmSimulator.Models
                 result = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseString);
             }
 
-            if (result["status"] == "" + 0)
+            if (result["status"].Equals("0"))
             {
                 FetchUpdated();
             }
 
             return result;
         }
-        public static  Dictionary<String, String> getTransactions()
+        public static  Dictionary<String, Dictionary<string, string>> getTransactions()
         {
-            Dictionary<string, string> response = new Dictionary<string, string>();
+            Dictionary<string, Dictionary<string, string>> response = new Dictionary<string, Dictionary<string, string>>();
             //GET Request
             using (var client = new WebClient())
             {
                 var responseString = client.DownloadString(url+"/data/" + UserId + "/transactions");
-                response = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseString);
+                Debug.WriteLine(responseString);
+                response = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(responseString);
             }
             Transactions = response;
             return response;
