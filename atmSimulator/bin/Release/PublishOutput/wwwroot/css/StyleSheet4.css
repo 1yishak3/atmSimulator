@@ -1,0 +1,19 @@
+﻿body {
+    margin: 25px 50px 75px 100px;
+    padding: 0;
+}
+
+.table {
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    padding: 35px;
+    border-collapse: collapse;
+}
+
+.th td {
+    text-align: left;
+    padding: 15px;
+    font-size: 32px;
+    border-bottom: 1px solid #808080;
+}

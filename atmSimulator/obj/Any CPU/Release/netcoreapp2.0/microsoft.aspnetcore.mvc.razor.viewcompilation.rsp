@@ -1,0 +1,21 @@
+E:\atmSimulator\atmSimulator
+--output-path=obj\Any CPU\Release\netcoreapp2.0\
+--application-name=atmSimulator
+--content-root=E:\atmSimulator\atmSimulator
+--file=E:\atmSimulator\atmSimulator\Views\Home\About.cshtml
+--file=E:\atmSimulator\atmSimulator\Views\Home\Contact.cshtml
+--file=E:\atmSimulator\atmSimulator\Views\Home\Index.cshtml
+--file=E:\atmSimulator\atmSimulator\Views\Shared\Error.cshtml
+--file=E:\atmSimulator\atmSimulator\Views\Shared\_Layout.cshtml
+--file=E:\atmSimulator\atmSimulator\Views\Shared\_Layout1.cshtml
+--file=E:\atmSimulator\atmSimulator\Views\Shared\_Layout2.cshtml
+--file=E:\atmSimulator\atmSimulator\Views\Shared\_ValidationScriptsPartial.cshtml
+--file=E:\atmSimulator\atmSimulator\Views\User\Deposit.cshtml
+--file=E:\atmSimulator\atmSimulator\Views\User\Home.cshtml
+--file=E:\atmSimulator\atmSimulator\Views\User\Index.cshtml
+--file=E:\atmSimulator\atmSimulator\Views\User\Login.cshtml
+--file=E:\atmSimulator\atmSimulator\Views\User\Transactions.cshtml
+--file=E:\atmSimulator\atmSimulator\Views\User\Transfer.cshtml
+--file=E:\atmSimulator\atmSimulator\Views\User\Withdraw.cshtml
+--file=E:\atmSimulator\atmSimulator\Views\_ViewImports.cshtml
+--file=E:\atmSimulator\atmSimulator\Views\_ViewStart.cshtml

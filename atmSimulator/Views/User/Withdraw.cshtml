@@ -1,4 +1,5 @@
 ﻿@{
+    //Neke Kwetey and Yishak Tofik Mohammed
     ViewData["Title"] = "Withdraw";
     Layout = "~/Views/Shared/_Layout1.cshtml";
 }
@@ -17,45 +18,45 @@
         <b>The amount entered must be a multiple of 20 and less than $500.00</b>
     </p>
     <br /> <br />
-    <div class="container">
+    <div style="width:100%" class="container">
         <center>
-            <div class="row">
-                <div class="col-md-4">
-                    <form action="~/User/WithdrawAmt" method="POST">
+            <div style="width:100%" class="row">
+                <div style="width:50%"class="col-md-4">
+                    <form style="width:100%" action="~/User/WithdrawAmt" method="POST">
                         <input type="hidden" name="amt" value="20">
-                        <input type="submit" class="btn btn-success" value="20" />
+                        <input style="border-radius:0%;width:100%" type="submit" class="btn btn-success" value="20" />
                     </form>
                     <br />
                     <br />
-                    <form action="~/User/WithdrawAmt" method="POST">
+                    <form style="width:100%" action="~/User/WithdrawAmt" method="POST">
                         <input type="hidden" value="100" name="amt">
-                        <input type="submit" class="btn btn-success" value="100" />
+                        <input style="border-radius:0%;width:100%" type="submit" class="btn btn-success" value="100" />
                     </form>
                     <br />
                     <br />
-                    <form action="~/User/WithdrawAmt" method="POST">
+                    <form style="width:100%" action="~/User/WithdrawAmt" method="POST">
                         <input type="hidden" name="amt" value="300">
-                        <input type="submit" class="btn btn-success" value="300" />
+                        <input style="border-radius:0%;width:100%" type="submit" class="btn btn-success" value="300" />
                     </form>
                     <br />
                     <br />
                 </div>
-                <div class="col-md-4">
-                    <form action="~/User/WithdrawAmt" method="POST">
+                <div style="width:50%" class="col-md-4">
+                    <form style="width:100%" action="~/User/WithdrawAmt" method="POST">
                         <input type="hidden" value="40" name="amt">
-                        <input type="submit" class="btn btn-success" value="40" />
+                        <input style="border-radius:0%;width:100%" type="submit" class="btn btn-success" value="40" />
                     </form>
                     <br />
                     <br />
-                    <form action="~/User/WithdrawAmt" method="POST">
+                    <form style="width:100%" action="~/User/WithdrawAmt" method="POST">
                         <input type="hidden" value="200" name="amt">
-                        <input type="submit" class="btn btn-success" value="200" />
+                        <input style="border-radius:0%;width:100%" type="submit" class="btn btn-success" value="200" />
                     </form>
                     <br />
                     <br />
-                    <form action="~/User/WithdrawAmt" method="POST">
+                    <form style="width:100%" action="~/User/WithdrawAmt" method="POST">
                         <input type="hidden" value="500" name="amt">
-                        <input type="submit" class="btn btn-success" value="500" />
+                        <input style="border-radius:0%;width:100%" type="submit" class="btn btn-success" value="500" />
                     </form>
                     <br />
                     <br />
