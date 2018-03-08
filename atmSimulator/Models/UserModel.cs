@@ -15,8 +15,6 @@ namespace atmSimulator.Models
 {
     public class UserModel
     {
-        //read the comments below very well dude
-        //to do things faster.
 
         public static String UserId { get; set; }
         public static String Name { get; set; }
@@ -25,8 +23,9 @@ namespace atmSimulator.Models
         public static bool LoggedIn { get; set; }
         public static String url = "https://rahyozxcgs.localtunnel.me";
         //every function below should check if user is logged in first
-        //if user is logged in, continue with fetching data, if not, then don't fetch. Just return a dict with status 1 and error not logged in
-        //my controllers will handle this and tell it to the view.
+        //if user is logged in, continue with fetching data, if not, then don't fetch. Just 
+	//return a dict with status 1 and error not logged in my controllers will handle this 
+	//and tell it to the view.
 
        
 
@@ -34,15 +33,15 @@ namespace atmSimulator.Models
         public static Dictionary<string,string> Login(string username, int pin1)
         {
             //do login here
-            //I will return an object, which will be the username userId current blance and stuff like that
-            //you can deserialize this and assign to the static variables above
-
-            //then I will fetch that data on controller and do the rest of the work there
-
-            //when it has successfully logged in, make sure you set loggedIn to true so that
-            //the rest of the functions will work
+            //Database will return an object, which will be the username userId current balance 
+	    //and stuff like that Model can deserialize this and assign to the static variables
+	    //above then Controller will fetch that data on controller and do the rest of the
+	    //work there when it has successfully logged in, make sure you set loggedIn to true
+	    //so that the rest of the functions will work
             string pin = (Convert.ToString(pin1));
             var result = "";
+
+	    //use WebClient to send the POST request
             try
             {
                 using (var client = new WebClient())
@@ -58,15 +57,17 @@ namespace atmSimulator.Models
                 }
                 Debug.WriteLine(result);
             }
+
             catch(WebException e)
             {
                 Debug.WriteLine(e);
             }
             
-
+	    //convert the request's response string into a dictionary
             Dictionary<string, string> mainDict = JsonConvert.DeserializeObject<Dictionary<string, string>>(result);
 
-            while (mainDict == null) ;
+	    //if the status is zero, assign variables accordingly, else log-in failed
+            while (mainDict == null);
             Debug.WriteLine(mainDict);
             if (mainDict["status"].Equals("0"))
             {
@@ -79,7 +80,7 @@ namespace atmSimulator.Models
 
             else { LoggedIn = false; }
             
-
+	    //if log-in worked, return status zero and no error
             if (LoggedIn)
             {
                 Dictionary<String, String> u = new Dictionary<String, String>();
@@ -88,6 +89,8 @@ namespace atmSimulator.Models
                 u.Add("error", "");
                 return u;
             }
+
+	    //if log-in fails, return status one and an error message
             else
             {
                 Dictionary<String, String> u = new Dictionary<String, String>();
@@ -97,18 +100,20 @@ namespace atmSimulator.Models
                 return u;
             }
         }
+
         public static void FetchUpdated()
         {
-            //you should call this function after every update like withdrawing transfering ot depositing
+            //Model should call this function after every update like withdrawing transfering ot depositing
             Dictionary<string, string> dict = new Dictionary<string, string>();
 
-            //GET Request
+            //WebClient's GET Request
             using (var client = new WebClient())
             {
                 var responseString = client.DownloadString(url+"/data/" + UserId + "/all");
                 dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseString);
             }
 
+	    //if post was a success, set variables 
             if (dict["status"].Equals("0"))
             {
                 UserId = dict["uid"];
@@ -118,6 +123,8 @@ namespace atmSimulator.Models
             }
 
         }
+
+	//posting method to be used for deposit and withdrawal
         public static Dictionary<String, String> post(double amount, string action)
         {
             Dictionary<string, string> dict = new Dictionary<string, string>();
@@ -137,22 +144,28 @@ namespace atmSimulator.Models
 
             return dict;
         }
+
+	//withdraw method
         public static Dictionary<String, String> Withdraw(double amt)
         {
             //if not logged in, return a dict containing status 1 and error not logged in automatically
-            //make sure you check for common sense things like amount greater than 0 and stuff
+            //if amount less than 0 or 0, handle appropriately
 
             //call fetchUpdated() here to reflect changes made to the data base
+	    
             Dictionary<string, string> fail = new Dictionary<string, string>()
                 { {"status", "1"}, {"error", "not logged in"} };
 
-            if (!LoggedIn) { return fail; }
+            if (!LoggedIn) { return fail; } //check if not logged in
 
+	    //check amount for negative or zero values
             if (amt > CurrentBalance) { fail["error"] = "non-sufficient funds"; return fail; }
             else if (amt <= (double)0) { fail["error"] = "check amount being withdrawn"; return fail; }
 
+	  
             Dictionary<string, string> result = post(amt, "withdraw");
 
+	    //if result was a success, update variables
             if (result["status"].Equals("0"))
             {
                 FetchUpdated();
@@ -161,8 +174,11 @@ namespace atmSimulator.Models
             return result;
             
         }
+
+	//deposit method
         public static Dictionary<String, String> Deposit(double amount)
         {
+	    //
             Dictionary<string, string> fail = new Dictionary<string, string>()
                 { {"status", "1"}, {"error", "not logged in"} };
 
@@ -180,10 +196,14 @@ namespace atmSimulator.Models
 
             return response;
         }
+
+	//transfer method
         public static Dictionary<String, String> Transfer(String toId, double amount)
         {
-            Dictionary<string, string> result = new Dictionary<string, string>();
 
+            Dictionary<string, string> result = new Dictionary<string, string>();
+		
+	    //identify receiver's id and amount
             using (var client = new WebClient())
             {
                 var values = new NameValueCollection();
@@ -198,6 +218,7 @@ namespace atmSimulator.Models
                 result = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseString);
             }
 
+	    //if success, update variables
             if (result["status"].Equals("0"))
             {
                 FetchUpdated();
@@ -205,19 +226,26 @@ namespace atmSimulator.Models
 
             return result;
         }
+
+
         public static  Dictionary<String, Dictionary<string, string>> getTransactions()
         {
+	    //have transactions as a dictionary with key as the number of transaction and value as the transaction
+	    //itself
             Dictionary<string, Dictionary<string, string>> response = new Dictionary<string, Dictionary<string, string>>();
-            //GET Request
+            
+	    //GET Request
             using (var client = new WebClient())
             {
                 var responseString = client.DownloadString(url+"/data/" + UserId + "/transactions");
                 Debug.WriteLine(responseString);
                 response = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(responseString);
             }
+
             Transactions = response;
             return response;
         }
+
         public static void Logout()
         {
             LoggedIn = false;
