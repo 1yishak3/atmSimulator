@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Dagmawi Sraj
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,15 +16,13 @@ namespace atmSimulator.Models
 {
     public class UserModel
     {
-        //read the comments below very well dude
-        //to do things faster.
 
         public static String UserId { get; set; }
         public static String Name { get; set; }
         public static Double CurrentBalance { get; set; }
         public static Dictionary<String, Dictionary<string, string>> Transactions { get; set; }
         public static bool LoggedIn { get; set; }
-        public static String url = "https://rahyozxcgs.localtunnel.me";
+        public static String url = "https://gswse4ha.burrow.io";
         //every function below should check if user is logged in first
         //if user is logged in, continue with fetching data, if not, then don't fetch. Just return a dict with status 1 and error not logged in
         //my controllers will handle this and tell it to the view.
@@ -34,15 +33,14 @@ namespace atmSimulator.Models
         public static Dictionary<string,string> Login(string username, int pin1)
         {
             //do login here
-            //I will return an object, which will be the username userId current blance and stuff like that
-            //you can deserialize this and assign to the static variables above
-
-            //then I will fetch that data on controller and do the rest of the work there
-
-            //when it has successfully logged in, make sure you set loggedIn to true so that
-            //the rest of the functions will work
+            //Database will return an object, which will be the username userId current balance 
+            //and stuff like that Model can deserialize this and assign to the static variables
+            //above then Controller will fetch that data on controller and do the rest of the
+            //work there when it has successfully logged in, make sure you set loggedIn to true
+            //so that the rest of the functions will work
             string pin = (Convert.ToString(pin1));
             var result = "";
+            //use WebClient to send the POST request
             try
             {
                 using (var client = new WebClient())
@@ -62,10 +60,10 @@ namespace atmSimulator.Models
             {
                 Debug.WriteLine(e);
             }
-            
 
+            //convert the request's response string into a dictionary
             Dictionary<string, string> mainDict = JsonConvert.DeserializeObject<Dictionary<string, string>>(result);
-
+            //if the status is zero, assign variables accordingly, else log-in failed
             while (mainDict == null) ;
             Debug.WriteLine(mainDict);
             if (mainDict["status"].Equals("0"))
@@ -197,7 +195,7 @@ namespace atmSimulator.Models
 
                 result = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseString);
             }
-
+            //if success, update variables
             if (result["status"].Equals("0"))
             {
                 FetchUpdated();
@@ -207,6 +205,8 @@ namespace atmSimulator.Models
         }
         public static  Dictionary<String, Dictionary<string, string>> getTransactions()
         {
+            //have transactions as a dictionary with key as the number of transaction and value as the transaction
+            //itself
             Dictionary<string, Dictionary<string, string>> response = new Dictionary<string, Dictionary<string, string>>();
             //GET Request
             using (var client = new WebClient())

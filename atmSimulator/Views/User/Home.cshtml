@@ -1,4 +1,5 @@
-﻿@{
+﻿@{  
+    //Neke Kwetey
     ViewData["Title"] = "Home";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
@@ -8,7 +9,7 @@
 }
 
 <body class="homebox">
-    <h2>HOME PAGE</h2>
+    <h2>HOME</h2>
     <br />
     <br />
     <p style="font-size:large">
@@ -17,35 +18,35 @@
         Please select your preferred transaction.
     </p>
     <br /> <br />
-    <div class="container">
+    <div style="width: 75%" class="container">
         <center>
-            <div class="row">
-                <div class="col-md-4">
-                    <form action="~/User/Deposit" method="POST">
-                        <input type="submit" class="btn btn-success" value="DEPOSIT" />
+            <div style="width: 100%" class="row">
+                <div style="width:45%" class="col-md-4">
+                    <form style="width: 100%" action="~/User/Deposit" method="POST">
+                        <input style="width: 100%;font-size:13px" type="submit" class="btn btn-success" value="DEPOSIT" />
                     </form>
                     <br />
                     <br />
                     <br />
                     <br />
-                    <form action="~/User/Transfer" method="POST">
-                        <input type="submit" class="btn btn-success" value="TRANSFER" />
+                    <form style="width: 100%" action="~/User/Transfer" method="POST">
+                        <input style="width: 100%;font-size:13px" type="submit" class="btn btn-success" value="TRANSFER" />
                     </form>
                     <br />
                     <br />
                     <br />
                     <br />
                 </div>
-                <div class="col-md-4">
-                    <form action="~/User/Withdraw" method="POST">
-                        <input type="submit" class="btn btn-success" value="WITHDRAW" />
+                <div style="width: 55%" class="col-md-4">
+                    <form style="width: 100%" action="~/User/Withdraw" method="POST">
+                        <input style="width: 100%;font-size:13px" type="submit" class="btn btn-success" value="WITHDRAW" />
                     </form>
                     <br />
                     <br />
                     <br />
                     <br />
-                    <form action="~/User/Transactions" method="POST">
-                        <input type="submit" class="btn btn-success" value="TRANSACTIONS" />
+                    <form style="width: 100%" action="~/User/Transactions" method="POST">
+                        <input style="width: 100%;font-size:13px"  type="submit" class="btn btn-success" value="HISTORY" />
                     </form>
                     <br />
                     <br />

@@ -1,15 +1,10 @@
-﻿using System;
-
+﻿//@Yishak Tofik Mohammed
+using System;
 using System.Collections.Generic;
-
 using System.Linq;
-
 using System.Threading.Tasks;
-
 using Microsoft.AspNetCore.Mvc;
-
 using atmSimulator.Models;
-
 using System.Diagnostics;
 
 
@@ -17,19 +12,12 @@ using System.Diagnostics;
 
 
 namespace atmSimulator.Controllers
-
 {
-
     public class UserController : Controller
-
     {
-
         Dictionary<String, String> user;
-
         // GET: /<controller>/
-
-        //this is going to be the home page
-
+       
         public IActionResult Mlogin(string username, int pin)
         {
 
@@ -45,8 +33,8 @@ namespace atmSimulator.Controllers
                 return View("Login");
             }
         }
-        //public 
 
+        //this is going to be the home page
         public IActionResult Index()
         {
             return View();
@@ -62,8 +50,6 @@ namespace atmSimulator.Controllers
             return View();
 
         }
-
-
 
         //Landing page (contains buttons to withdraw page deposit page and stuff)
 
@@ -142,17 +128,11 @@ namespace atmSimulator.Controllers
 
         {
             if (UserModel.LoggedIn)
-
             {
-
                 ViewData["UserId"] = UserModel.UserId;
-
                 ViewData["Name"] = UserModel.Name;
-
                 ViewData["CurrentBalance"] = UserModel.CurrentBalance;
-
                 ViewData["LoggedIn"] = UserModel.LoggedIn;
-
             }
 
             return View();

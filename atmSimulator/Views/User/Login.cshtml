@@ -1,4 +1,5 @@
 ﻿@{
+    //Neke Kwetey
     ViewData["Title"] = "LoginPage";
     Layout = "~/Views/Shared/_Layout1.cshtml";
 }
@@ -13,9 +14,9 @@
     <h5>Please input your login credentials here.</h5>
     <form method="POST" action="~/User/Mlogin">
         <p style="font-size:large;color: coral">Username</p>
-        <input type="text" name="username" title="Enter a username" required><br />
+        <input style="height:55px" type="text" name="username" title="Enter a username" required><br />
         <p style="font-size:large;color: coral">PIN</p>
-        <input type="password" name="pin" pattern="[0-9]{4}" title=" (4-digit nnumber) Enter a valid pin number" required><br />
+        <input style="height:55px" type="password" name="pin" pattern="[0-9]{4}" title="(4-digit number) Enter a valid pin number" required><br />
         <input type="submit" value="Login" class="btn btn-success">
     </form>
     @if (@ViewBag.MyErrorMessage != null)

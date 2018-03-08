@@ -1,4 +1,5 @@
-﻿@{
+﻿@{  
+    //Neke Kwetey
     ViewData["Title"] = "Transfer";
     Layout = "~/Views/Shared/_Layout1.cshtml";
 }
@@ -8,21 +9,20 @@
 }
 
 <body class="container">
-    <div class="loginbox">
+    <div style="width:100%" class="loginbox">
         <center><h2>TRANSFER</h2></center>
         <h3> Please input bank credentials and amount.</h3>
         <p style="font-size:large; color: coral">FROM</p>
         <select name="myaccount">
-            <option value="myaccount" selected>MY ACCOUNT</option>
+            <option value="myaccount" selected>Current Account</option>
         </select>
-        <form method="POST" action="~/User/TransferAmt">
+        <form style="width:100%" method="POST" action="~/User/TransferAmt">
             <p style="font-size:large;color: coral">TO</p>
-            <input type="number" name="bankaccount" pattern="[0-9]{4}" title=" () Enter a valid bank accounnt" required><br /><br />
+            <input type="number" name="bankaccount" title="Enter a valid bank account ID" required><br /><br />
             <p style="font-size:large;color: coral">Amount</p>
-            <input type="number" name="amount" title=" (4-digit nnumber) Enter an amount" required><br /><br /><br /><br />
-            <center>
-                <input type="submit" value="Transfer" class="btn btn-success" role="button" />
-            </center>
+            <input type="number" name="amount" title=" (4-digit number) Enter an amount to transfer" required><br /><br /><br /><br />
+            <input style="width:50%; border-radius:0%" type="submit" value="Transfer" class="btn btn-success" role="button" />
+            
         </form>
     </div>
     <br />
