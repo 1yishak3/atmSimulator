@@ -26,8 +26,8 @@ db = SQLAlchemy(app)
 class Transaction(db.Model):
     __tablename__='transactions'
     trans_id = db.Column(
-        db.String(64),  
-        primary_key=True, 
+        db.String(64),
+        primary_key=True,
         nullable=False)
     trans_type = db.Column(db.String, nullable=False)
     trans_amount = db.Column(db.Float, nullable=False)
@@ -50,17 +50,17 @@ class User(db.Model):
 
 db.drop_all()
 db.create_all()
-default_user = User(user_id=0, 
-                    name="Gamaric Test", 
+default_user = User(user_id=0,
+                    name="Gamaric Test",
                     current_balance=5000.0,
                     pin=1754)
 default_user2 = User(user_id=1,
                     name="Gamaric Test 2",
                     current_balance=5000.0,
                     pin=1754)
-default_transaction = Transaction(trans_id="321056", 
-                    user_id=0, 
-                    trans_amount=0, 
+default_transaction = Transaction(trans_id="321056",
+                    user_id=0,
+                    trans_amount=0,
                     trans_type='withdraw')
 
 db.session.add(default_transaction)
@@ -75,9 +75,9 @@ def home():
 
 @app.route('/login', methods=['GET','POST'])
 def login():
-    
+
     form = request.form
-    
+
     #response will contain uid to be used in future transactions
     #deal with username uniqueness issue and using that to access database
     result=db.session.query(User).filter_by(name=form["username"]).first()
@@ -172,7 +172,7 @@ def deposit(uid, amtl):
     if(amt<0):
         actu.current_balance=amti
         return {'status':1, 'error':"too little"}
-    else:    
+    else:
         actu.current_balance=amti+amt
         size=len(db.session.query(Transaction).all())
         trans = Transaction(user_id=uid, trans_id=size, trans_type='deposit', trans_amount=amt)
